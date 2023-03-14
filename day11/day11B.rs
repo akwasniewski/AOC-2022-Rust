@@ -51,7 +51,7 @@ fn monkey_calc(monkey: i128, mut val: i128) ->i128{
         7=>val=val+8,
         _=>panic!(),
     }
-    val=val%9699690;
+    val=val%9699690; //product of all the modulos (i'm proud of myself for figuring it out)
     val
 }
 fn monkey_where(monkey: i128, val: i128) -> i128{
