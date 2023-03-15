@@ -1,3 +1,4 @@
+//literally fastest problem i've done (one line change xdd)
 //bfs
 use std::fs::File;
 use std::collections::LinkedList;
@@ -6,7 +7,6 @@ fn main() -> io::Result<()>{
     let file = File::open("in.txt")?;
     let reader = BufReader::new(file);
     let mut map: Vec<Vec<i32>> =  Vec::new();
-    let mut starting_pos: (i32, i32) = (0, 0);
     let mut ending_pos: (i32, i32) = (0, 0);
     let mut queue: LinkedList<(i32, i32, i32)>= LinkedList::new();
     let mut line_num = 0;
@@ -17,8 +17,8 @@ fn main() -> io::Result<()>{
         let mut row: Vec<i32> = Vec::new();
         let mut char_num = 0;
         for c in line?.chars(){
-            if c=='S'{
-                starting_pos=(char_num, line_num);
+            if c=='S' || c=='a'{
+                queue.push_back((char_num, line_num, 0));
                 row.push(0);
             }
             else if c=='E'{
@@ -34,7 +34,6 @@ fn main() -> io::Result<()>{
         line_num += 1;
     }
     //bfs
-    queue.push_back((starting_pos.0, starting_pos.1, 0));
     let mut res= 0;
     while queue.len()!=0 {
         let cur=queue.pop_front().unwrap();
