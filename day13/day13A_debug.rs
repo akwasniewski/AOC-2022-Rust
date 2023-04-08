@@ -1,3 +1,4 @@
+//solves the problem and generates output similar to the one on AOC site containing the problem (used for debugging)
 use std::fs::File;
 use std::io::{self,prelude::*, BufReader};
 fn main() -> io::Result<()>{
