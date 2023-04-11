@@ -1,6 +1,8 @@
 use std::fs::File;
 use std::io::{self,prelude::*, BufReader};
 fn main() -> io::Result<()>{
+    use std::time::Instant;
+    let now = Instant::now();
     let file = File::open("in.txt")?;
     let reader = BufReader::new(file);
     let row: i32=2000000;
@@ -38,5 +40,7 @@ fn main() -> io::Result<()>{
         }
     }
     println!("count: {}",count);
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?}", elapsed);
     Ok(())
 }
